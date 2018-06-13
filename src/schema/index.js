@@ -1,5 +1,4 @@
 const { GraphQLSchema, GraphQLObjectType } = require("graphql");
-const helloWorld = require('./schemas/helloworld');
 const socialmediaPosts = require('./schemas/socialmedia-posts');
 
 const BaseType = (services) => {
@@ -11,7 +10,6 @@ const BaseType = (services) => {
 
 module.exports = new GraphQLSchema({
     query: BaseType({
-        helloWorld,
         socialmediaPosts
     })
 });
