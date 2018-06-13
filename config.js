@@ -1,8 +1,10 @@
-module.exports = {
+let config = {
     socialmediaWorker: {
-        url: "http://localhost:8080/",
+        url: process.env.SOCIALMEDIA_WORKER_URL || "http://localhost:8080/",
         endpoints: {
             posts: "posts/"
         }
     }
 }
+
+module.exports = config;
