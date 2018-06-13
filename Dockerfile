@@ -9,4 +9,5 @@ RUN npm i --prod
 COPY src ./src
 COPY config.js .
 
+EXPOSE 4000
 CMD npm start
