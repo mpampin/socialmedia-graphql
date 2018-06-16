@@ -3,9 +3,10 @@ const graphqlHTTP = require('express-graphql');
 const schema = require('./schema');
 const resolvers = require('./resolvers');
 const config = require('../config');
+const cors = require('cors');
 
 var app = express();
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', cors(), graphqlHTTP({
   schema: schema,
   rootValue: resolvers,
   graphiql: true,
