@@ -11,5 +11,8 @@ const BaseType = (services) => {
 module.exports = new GraphQLSchema({
     query: BaseType({
         socialmediaPosts
+    }),
+    subscription: BaseType({
+        socialmediaPostsUpdates: socialmediaPosts
     })
 });
