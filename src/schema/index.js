@@ -1,18 +1,19 @@
 const { GraphQLSchema, GraphQLObjectType } = require("graphql");
 const socialmediaPosts = require('./schemas/socialmedia-posts');
+const socialmediaPostsUpdates = require('./schemas/socialmedia-posts-updates');
 
-const BaseType = (services) => {
+const BaseType = (name, services) => {
     return new GraphQLObjectType({
-      name: 'Root',
+      name,
       fields: services
     })
   }
 
 module.exports = new GraphQLSchema({
-    query: BaseType({
+    query: BaseType('Query', {
         socialmediaPosts
     }),
-    subscription: BaseType({
-        socialmediaPostsUpdates: socialmediaPosts
+    subscription: BaseType('Subscription', {
+        socialmediaPostsUpdates: socialmediaPostsUpdates
     })
 });

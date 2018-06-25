@@ -1,15 +1,15 @@
 const config = require("../../config");
 const request = require('request-promise');
 
-const Service = async (interestQuery) => {
+const Service = async (data, {interestQuery}) => {
     
     const uri = `${config.socialmediaWorker.url}${config.socialmediaWorker.endpoints.posts}`;
-    console.log(uri);
+    
     const options = {
         method: 'GET',
         uri,
         qs: { 
-            interest: interestQuery.interest
+            interest: interestQuery
         },
         json: true,
         timeout: 60000

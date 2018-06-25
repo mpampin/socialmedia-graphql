@@ -4,7 +4,7 @@ const {
     GraphQLString
 } = require('graphql');
 const PostType = require('../types/post');
-const resolver = require('../../resolvers/socialmedia-posts');
+const postPubSub = require('../../utils/postPubSub');
 
 module.exports = {
   type: new GraphQLList(PostType),
@@ -15,5 +15,10 @@ module.exports = {
       type: new GraphQLNonNull(GraphQLString)
     }
   },
-  resolve: resolver
+  resolve: (data) => {
+    return data;
+  },
+  subscribe: (data, { interest }) => {
+    return postPubSub.asyncIterator(interest)
+  }
 }
