@@ -1,7 +1,7 @@
 const { graphql } = require('graphql');
 const nock = require('nock');
 const { expect } = require('chai');
-const { config, schema, resolvers } = require("./common");
+const { config, schema } = require("./common");
 
 const socialmediaPostsMock = require('./mocks/socialmedia-posts-response.js');
 
@@ -28,7 +28,7 @@ describe('Socialmedia Posts', () => {
                         }
                     }`;
 
-                    let response = (await graphql(schema, query, resolvers));
+                    let response = (await graphql(schema, query));
                     
                     expect(response).not.to.have.property('error');
                     expect(response).to.have.nested.property('data.socialmediaPosts');
@@ -65,7 +65,7 @@ describe('Socialmedia Posts', () => {
                         }
                     }`;
 
-                    let response = (await graphql(schema, query, resolvers));
+                    let response = (await graphql(schema, query));
                     
                     expect(response).to.have.property('errors');
 
